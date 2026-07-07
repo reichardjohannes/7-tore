@@ -30,7 +30,6 @@
   }
 
   *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
   body{
     margin:0;
     background:var(--bg);
@@ -64,8 +63,68 @@
   .spine .node{width:15px;height:15px;border-radius:50%;position:relative;}
   .spine .stem{flex:0 0 26px;height:2px;background:var(--hair);}
 
+  /* ---------- STICKY GATE NAV ---------- */
+  .gatenav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(236,228,212,.92);
+    backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--hair);
+  }
+  .gatenav-inner{
+    max-width:var(--maxw);margin:0 auto;padding:0 26px;
+    display:flex;align-items:center;gap:18px;height:52px;
+  }
+  .gatenav-home{
+    font-family:var(--display);font-size:15px;font-weight:500;color:var(--ink);
+    border:0;flex:0 0 auto;white-space:nowrap;
+  }
+  .gatenav-dots{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;flex:1 1 auto;}
+  .gatenav-dots::-webkit-scrollbar{display:none;}
+  .gatenav-dots a{
+    display:flex;align-items:center;gap:6px;
+    padding:6px 10px;border-radius:20px;border:0;
+    font-size:12.5px;font-weight:500;color:var(--muted);
+    white-space:nowrap;flex:0 0 auto;
+    transition:background .15s,color .15s;
+  }
+  .gatenav-dots a .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex:0 0 auto;}
+  .gatenav-dots a:hover{background:rgba(0,0,0,.05);}
+  .gatenav-dots a.active{background:var(--accent);color:#fff;}
+  .gatenav-dots a.active .dot{background:#fff;}
+  @media (max-width:640px){.gatenav-dots a .lbl{display:none;}.gatenav-dots a{padding:8px;}}
+  @media print{.gatenav{display:none;}}
+
+  /* ---------- OVERVIEW / TOC CARDS ---------- */
+  .toc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px;margin-top:20px;}
+  .toc-card{
+    display:flex;flex-direction:column;gap:4px;
+    background:var(--panel);border:1px solid var(--hair-soft);
+    border-top:4px solid var(--accent);border-radius:6px;
+    padding:16px 16px 14px;text-decoration:none;
+    transition:transform .15s,box-shadow .15s;
+  }
+  .toc-card:hover{transform:translateY(-3px);box-shadow:0 10px 24px -14px rgba(0,0,0,.28);opacity:1;}
+  .toc-num{font-size:11px;letter-spacing:.14em;color:var(--accent);font-weight:600;}
+  .toc-glyph{font-family:var(--display);font-size:22px;color:var(--accent);line-height:1;margin:2px 0;}
+  .toc-name{font-family:var(--display);font-size:18px;color:var(--ink);}
+  .toc-sub{font-size:12.5px;color:var(--muted);}
+
+  /* ---------- BACK TO TOP ---------- */
+  .totop{
+    position:fixed;right:20px;bottom:20px;z-index:50;
+    width:44px;height:44px;border-radius:50%;
+    background:var(--ink);color:var(--bg);
+    display:flex;align-items:center;justify-content:center;
+    font-size:18px;border:0;text-decoration:none;
+    opacity:0;pointer-events:none;transform:translateY(6px);
+    transition:opacity .2s,transform .2s;
+    box-shadow:0 8px 20px -8px rgba(0,0,0,.4);
+  }
+  .totop.show{opacity:1;pointer-events:auto;transform:translateY(0);}
+  @media print{.totop{display:none;}}
+
   /* ---------- SECTION SHELL ---------- */
-  section{padding:30px 0;}
+  section{padding:30px 0;scroll-margin-top:66px;}
   .block{
     background:var(--panel);
     border:1px solid var(--hair-soft);
@@ -182,10 +241,25 @@
 </head>
 <body>
 
+<nav class="gatenav" aria-label="Tore-Navigation">
+  <div class="gatenav-inner">
+    <a href="#top" class="gatenav-home">7 Tore</a>
+    <div class="gatenav-dots">
+      <a href="#gate-1" style="--accent:var(--c-root)"><span class="dot"></span><span class="lbl">1 · Wurzel</span></a>
+      <a href="#gate-2" style="--accent:var(--c-sacral)"><span class="dot"></span><span class="lbl">2 · Sakral</span></a>
+      <a href="#gate-3" style="--accent:var(--c-solar)"><span class="dot"></span><span class="lbl">3 · Solar</span></a>
+      <a href="#gate-4" style="--accent:var(--c-heart)"><span class="dot"></span><span class="lbl">4 · Herz</span></a>
+      <a href="#gate-5" style="--accent:var(--c-throat)"><span class="dot"></span><span class="lbl">5 · Kehle</span></a>
+      <a href="#gate-6" style="--accent:var(--c-thirdeye)"><span class="dot"></span><span class="lbl">6 · Auge</span></a>
+      <a href="#gate-7" style="--accent:var(--c-crown)"><span class="dot"></span><span class="lbl">7 · Krone</span></a>
+    </div>
+  </div>
+</nav>
+
 <div class="wrap">
 
   <!-- ============ HERO ============ -->
-  <header class="hero">
+  <header class="hero" id="top">
     <div class="eyebrow">Männerkreis · Leitfaden für zwei Leitende</div>
     <h1>Der Weg durch<br>die <em>sieben Tore</em></h1>
     <p class="lede">Sieben Abende. An jedem begegnen wir einem Energiezentrum, einem männlichen Archetyp, einer Kundalini-Praxis und einem Klang. Über die Runden hinweg steigt die Energie von der Wurzel zur Krone — der Bogen des Kreises folgt dem Aufsteigen der Kundalini durch die Wirbelsäule.</p>
@@ -201,8 +275,58 @@
     </div>
   </header>
 
+  <!-- ============ OVERVIEW ============ -->
+  <section id="overview" aria-label="Überblick über die sieben Tore">
+    <h2 class="section-title">Die sieben Tore im Überblick</h2>
+    <p class="lead-in">Ein Klick auf ein Tor springt direkt zum jeweiligen Abend.</p>
+    <div class="toc-grid">
+      <a class="toc-card" href="#gate-1" style="--accent:var(--c-root)">
+        <span class="toc-num">Tor 1 · Muladhara</span>
+        <span class="toc-glyph">लं</span>
+        <span class="toc-name">Die Wurzel</span>
+        <span class="toc-sub">Der Wilde Mann · Erdung &amp; Instinkt</span>
+      </a>
+      <a class="toc-card" href="#gate-2" style="--accent:var(--c-sacral)">
+        <span class="toc-num">Tor 2 · Svadhisthana</span>
+        <span class="toc-glyph">वं</span>
+        <span class="toc-name">Das Sakralzentrum</span>
+        <span class="toc-sub">Der Liebhaber · Sinnlichkeit &amp; Fluss</span>
+      </a>
+      <a class="toc-card" href="#gate-3" style="--accent:var(--c-solar)">
+        <span class="toc-num">Tor 3 · Manipura</span>
+        <span class="toc-glyph">रं</span>
+        <span class="toc-name">Das Solarzentrum</span>
+        <span class="toc-sub">Der Krieger · Wille &amp; Grenzen</span>
+      </a>
+      <a class="toc-card" href="#gate-4" style="--accent:var(--c-heart)">
+        <span class="toc-num">Tor 4 · Anahata</span>
+        <span class="toc-glyph">यं</span>
+        <span class="toc-name">Das Herz</span>
+        <span class="toc-sub">Der Heiler · Trauer &amp; Vergebung</span>
+      </a>
+      <a class="toc-card" href="#gate-5" style="--accent:var(--c-throat)">
+        <span class="toc-num">Tor 5 · Vishuddha</span>
+        <span class="toc-glyph">हं</span>
+        <span class="toc-name">Die Kehle</span>
+        <span class="toc-sub">Der Barde · Stimme &amp; Wahrheit</span>
+      </a>
+      <a class="toc-card" href="#gate-6" style="--accent:var(--c-thirdeye)">
+        <span class="toc-num">Tor 6 · Ajna</span>
+        <span class="toc-glyph">ॐ</span>
+        <span class="toc-name">Das Dritte Auge</span>
+        <span class="toc-sub">Der Magier · Intuition &amp; Vision</span>
+      </a>
+      <a class="toc-card" href="#gate-7" style="--accent:var(--c-crown)">
+        <span class="toc-num">Tor 7 · Sahasrara</span>
+        <span class="toc-glyph">ॐ</span>
+        <span class="toc-name">Die Krone</span>
+        <span class="toc-sub">Der König &amp; Weise · Sinn &amp; Segen</span>
+      </a>
+    </div>
+  </section>
+
   <!-- ============ HOW TO USE ============ -->
-  <section>
+  <section id="intro">
     <h2 class="section-title">Wie dieser Leitfaden gedacht ist</h2>
     <p class="lead-in">Jeder Abend hat dieselbe Dramaturgie, nur der Inhalt wechselt. Das gibt dem Kreis einen verlässlichen Rahmen, in dem echte Tiefe entstehen darf. Ihr führt zu zweit — mit zwei klaren Rollen, die ihr von Abend zu Abend tauschen könnt, damit ihr beide in beidem wachst.</p>
 
@@ -239,7 +363,7 @@
   </section>
 
   <!-- ============ GATE 1 — ROOT ============ -->
-  <section style="--accent:var(--c-root)">
+  <section id="gate-1" style="--accent:var(--c-root)">
     <div class="block">
       <div class="gate-head">
         <div class="glyph"><span class="bija">लं</span><span class="el">Erde · LAM</span></div>
@@ -333,7 +457,7 @@
   </section>
 
   <!-- ============ GATE 2 — SACRAL ============ -->
-  <section style="--accent:var(--c-sacral)">
+  <section id="gate-2" style="--accent:var(--c-sacral)">
     <div class="block">
       <div class="gate-head">
         <div class="glyph"><span class="bija">वं</span><span class="el">Wasser · VAM</span></div>
@@ -423,7 +547,7 @@
   </section>
 
   <!-- ============ GATE 3 — SOLAR ============ -->
-  <section style="--accent:var(--c-solar)">
+  <section id="gate-3" style="--accent:var(--c-solar)">
     <div class="block">
       <div class="gate-head">
         <div class="glyph"><span class="bija">रं</span><span class="el">Feuer · RAM</span></div>
@@ -512,7 +636,7 @@
   </section>
 
   <!-- ============ GATE 4 — HEART ============ -->
-  <section style="--accent:var(--c-heart)">
+  <section id="gate-4" style="--accent:var(--c-heart)">
     <div class="block">
       <div class="gate-head">
         <div class="glyph"><span class="bija">यं</span><span class="el">Luft · YAM</span></div>
@@ -603,7 +727,7 @@
   </section>
 
   <!-- ============ GATE 5 — THROAT ============ -->
-  <section style="--accent:var(--c-throat)">
+  <section id="gate-5" style="--accent:var(--c-throat)">
     <div class="block">
       <div class="gate-head">
         <div class="glyph"><span class="bija">हं</span><span class="el">Äther · HAM</span></div>
@@ -690,7 +814,7 @@
   </section>
 
   <!-- ============ GATE 6 — THIRD EYE ============ -->
-  <section style="--accent:var(--c-thirdeye)">
+  <section id="gate-6" style="--accent:var(--c-thirdeye)">
     <div class="block">
       <div class="gate-head">
         <div class="glyph"><span class="bija">ॐ</span><span class="el">Licht · OM</span></div>
@@ -782,7 +906,7 @@
   </section>
 
   <!-- ============ GATE 7 — CROWN ============ -->
-  <section style="--accent:var(--c-crown)">
+  <section id="gate-7" style="--accent:var(--c-crown)">
     <div class="block">
       <div class="gate-head">
         <div class="glyph"><span class="bija">ॐ</span><span class="el">Bewusstsein</span></div>
@@ -875,7 +999,7 @@
   </section>
 
   <!-- ============ CLOSING ============ -->
-  <section>
+  <section id="fest">
     <h2 class="section-title">Der achte Abend · Das Fest</h2>
     <p class="lead-in">Nach den sieben Toren ein größerer Abschluss in der Natur: ein Feuer, ein gemeinsamer Tag draußen, ein bewusster Übergang. Kein neues Thema, sondern das Würdigen des Weges, den ihr gemeinsam gegangen seid. Hier haben Räuchern, Feuer und ein einfaches Ritual ihren natürlichen Platz.</p>
 
@@ -896,5 +1020,26 @@
   </footer>
 
 </div>
+
+<a href="#top" class="totop" id="totop" aria-label="Nach oben">↑</a>
+
+<script>
+(function(){
+  var links = Array.prototype.slice.call(document.querySelectorAll('.gatenav-dots a'));
+  var sections = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  var totop = document.getElementById('totop');
+
+  function onScroll(){
+    var pos = window.scrollY + 120;
+    var current = -1;
+    sections.forEach(function(s, i){ if (s && s.offsetTop <= pos) current = i; });
+    links.forEach(function(a, i){ a.classList.toggle('active', i === current); });
+    totop.classList.toggle('show', window.scrollY > 500);
+  }
+  document.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+</script>
+
 </body>
 </html>
