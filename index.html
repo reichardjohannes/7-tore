@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Der Weg durch die sieben Tore — Leitfaden</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#ECE4D4;
+    --panel:#F4EEE1;
+    --ink:#241E17;
+    --muted:#6E6152;
+    --hair:#D6CBB4;
+    --hair-soft:#E0D7C4;
+
+    --c-root:#B03A2E;
+    --c-sacral:#C1662A;
+    --c-solar:#B8901E;
+    --c-heart:#4E7A4C;
+    --c-throat:#2E6E8E;
+    --c-thirdeye:#3E4290;
+    --c-crown:#6B4A8A;
+
+    --display:'Fraunces',Georgia,serif;
+    --body:'DM Sans',system-ui,sans-serif;
+    --maxw:820px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--body);
+    font-size:17px;
+    line-height:1.62;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 26px;}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:88px 0 46px;}
+  .hero .eyebrow{
+    font-size:12px;letter-spacing:.34em;text-transform:uppercase;
+    color:var(--muted);font-weight:600;margin-bottom:26px;
+  }
+  .hero h1{
+    font-family:var(--display);
+    font-weight:400;
+    font-size:clamp(40px,7vw,68px);
+    line-height:1.04;
+    letter-spacing:-.01em;
+    margin:0 0 22px;
+  }
+  .hero h1 em{font-style:italic;}
+  .hero .lede{font-size:19px;color:var(--muted);max-width:640px;}
+
+  /* the seven-dot spine — the signature mark */
+  .spine{display:flex;gap:9px;align-items:center;margin:34px 0 0;}
+  .spine .node{width:15px;height:15px;border-radius:50%;position:relative;}
+  .spine .stem{flex:0 0 26px;height:2px;background:var(--hair);}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:30px 0;}
+  .block{
+    background:var(--panel);
+    border:1px solid var(--hair-soft);
+    border-left:5px solid var(--accent,var(--hair));
+    border-radius:4px;
+    padding:34px 34px 30px;
+    margin:26px 0;
+  }
+  .divider{height:1px;background:var(--hair);margin:14px 0;border:0;}
+
+  /* intro / how-to blocks reuse .block but neutral */
+  .note{
+    background:transparent;border:1px dashed var(--hair);
+    border-radius:4px;padding:20px 22px;margin:22px 0;
+    font-size:15.5px;color:var(--muted);
+  }
+  .note strong{color:var(--ink);}
+
+  h2.section-title{
+    font-family:var(--display);font-weight:400;
+    font-size:clamp(26px,4.4vw,36px);line-height:1.1;margin:0 0 8px;
+  }
+  h3{
+    font-family:var(--body);font-weight:600;font-size:13px;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
+    margin:26px 0 10px;
+  }
+  h3:first-of-type{margin-top:6px;}
+  p{margin:0 0 14px;}
+  .lead-in{font-size:18px;}
+  ul{margin:0 0 14px;padding-left:20px;}
+  li{margin-bottom:7px;}
+  a{color:var(--accent,var(--c-throat));text-decoration:none;border-bottom:1px solid currentColor;}
+  a:hover{opacity:.72;}
+
+  /* ---------- GATE HEADER ---------- */
+  .gate-head{display:flex;gap:22px;align-items:flex-start;margin-bottom:6px;}
+  .glyph{
+    flex:0 0 92px;width:92px;height:92px;border-radius:50%;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    color:#fff;background:var(--accent);
+    box-shadow:0 6px 20px -8px var(--accent);
+  }
+  .glyph .bija{font-family:var(--display);font-size:30px;line-height:1;font-weight:500;}
+  .glyph .el{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;margin-top:5px;opacity:.9;}
+  .gate-head .titles{padding-top:4px;}
+  .gate-eyebrow{
+    font-size:12px;letter-spacing:.24em;text-transform:uppercase;
+    color:var(--accent);font-weight:600;margin-bottom:8px;
+  }
+  .gate-title{
+    font-family:var(--display);font-weight:400;
+    font-size:clamp(28px,5vw,40px);line-height:1.02;margin:0;letter-spacing:-.01em;
+  }
+
+  /* facts row */
+  .facts{display:flex;flex-wrap:wrap;gap:0;margin:20px 0 6px;
+    border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);}
+  .facts .f{flex:1 1 120px;padding:12px 14px 12px 0;}
+  .facts .f + .f{padding-left:14px;border-left:1px solid var(--hair-soft);}
+  .facts .k{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:3px;}
+  .facts .v{font-size:15px;font-weight:500;}
+
+  /* shadow poles */
+  .poles{display:flex;gap:14px;flex-wrap:wrap;margin:6px 0 4px;}
+  .pole{flex:1 1 240px;background:rgba(0,0,0,.025);border-radius:4px;padding:14px 16px;}
+  .pole .plabel{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:5px;}
+  .pole p{margin:0;font-size:15px;}
+
+  /* practice figure */
+  .practice-fig{display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap;margin:10px 0 4px;}
+  .figbox{flex:0 0 150px;text-align:center;}
+  .figbox svg{width:150px;height:150px;display:block;}
+  .figcap{font-size:12px;color:var(--muted);margin-top:2px;letter-spacing:.02em;}
+  .practice-fig .steps{flex:1 1 320px;min-width:280px;}
+  .practice-fig .steps ol{margin:0;padding-left:20px;}
+  .practice-fig .steps li{margin-bottom:7px;font-size:15.5px;}
+
+  .chip{display:inline-block;font-size:13px;font-weight:600;letter-spacing:.02em;
+    background:var(--accent);color:#fff;border-radius:20px;padding:3px 12px;margin:0 6px 6px 0;}
+  .mantra{font-family:var(--display);font-size:22px;font-weight:500;letter-spacing:.01em;margin:4px 0 10px;}
+
+  .duo{background:rgba(0,0,0,.03);border-radius:4px;padding:16px 18px;margin:8px 0 4px;}
+  .duo .role{font-weight:600;}
+  .duo p{font-size:15px;margin:0 0 8px;}
+  .duo p:last-child{margin-bottom:0;}
+
+  .links{font-size:14.5px;}
+  .links a{display:inline-block;margin:0 0 4px;}
+
+  /* two-leader legend chips */
+  .legend{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px;}
+  .legend .lg{flex:1 1 260px;border:1px solid var(--hair);border-radius:4px;padding:14px 16px;background:var(--panel);}
+  .legend .lg .name{font-family:var(--display);font-size:19px;margin-bottom:4px;}
+
+  footer{padding:40px 0 90px;color:var(--muted);font-size:14px;}
+  footer .divider{margin:22px 0;}
+
+  @media (max-width:560px){
+    body{font-size:16px;}
+    .block{padding:24px 20px;}
+    .gate-head{gap:16px;}
+    .glyph{flex-basis:70px;width:70px;height:70px;}
+    .glyph .bija{font-size:24px;}
+    .facts .f + .f{border-left:0;padding-left:0;}
+  }
+  @media print{
+    body{background:#fff;font-size:12pt;}
+    .block,.note,.duo,.pole,.legend .lg{break-inside:avoid;}
+    a{border:0;color:var(--ink);}
+    .hero{padding:20px 0;}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- ============ HERO ============ -->
+  <header class="hero">
+    <div class="eyebrow">Männerkreis · Leitfaden für zwei Leitende</div>
+    <h1>Der Weg durch<br>die <em>sieben Tore</em></h1>
+    <p class="lede">Sieben Abende. An jedem begegnen wir einem Energiezentrum, einem männlichen Archetyp, einer Kundalini-Praxis und einem Klang. Über die Runden hinweg steigt die Energie von der Wurzel zur Krone — der Bogen des Kreises folgt dem Aufsteigen der Kundalini durch die Wirbelsäule.</p>
+    <div class="spine">
+      <span class="node" style="background:var(--c-root)"></span>
+      <span class="node" style="background:var(--c-sacral)"></span>
+      <span class="node" style="background:var(--c-solar)"></span>
+      <span class="node" style="background:var(--c-heart)"></span>
+      <span class="node" style="background:var(--c-throat)"></span>
+      <span class="node" style="background:var(--c-thirdeye)"></span>
+      <span class="node" style="background:var(--c-crown)"></span>
+      <span class="stem"></span>
+    </div>
+  </header>
+
+  <!-- ============ HOW TO USE ============ -->
+  <section>
+    <h2 class="section-title">Wie dieser Leitfaden gedacht ist</h2>
+    <p class="lead-in">Jeder Abend hat dieselbe Dramaturgie, nur der Inhalt wechselt. Das gibt dem Kreis einen verlässlichen Rahmen, in dem echte Tiefe entstehen darf. Ihr führt zu zweit — mit zwei klaren Rollen, die ihr von Abend zu Abend tauschen könnt, damit ihr beide in beidem wachst.</p>
+
+    <div class="legend">
+      <div class="lg">
+        <div class="name">Der Hüter des Raums</div>
+        <p style="margin:0;font-size:15px;color:var(--muted)">Öffnet und schließt den Container, räuchert, hält die Zeit und den Redestab, wacht über die emotionale Sicherheit. Er redet wenig, ist aber ganz präsent — und fängt behutsam auf, wenn jemand von Gefühl überflutet wird.</p>
+      </div>
+      <div class="lg">
+        <div class="name">Der Führer der Praxis</div>
+        <p style="margin:0;font-size:15px;color:var(--muted)">Leitet das Einstimmen, den Archetyp-Impuls, die Kundalini-Praxis und das Chanten. Er gibt Struktur und Energie und macht die Übungen vor.</p>
+      </div>
+    </div>
+
+    <div class="note">
+      <strong>Wenn ein Dritter einen Teil übernimmt:</strong> Er schlüpft für dieses Segment in die Rolle des Führers der Praxis, während ihr zwei als Hüter die Kontinuität und den Halt des Raums tragt. So bleibt der Rahmen stabil, auch wenn die Stimme wechselt.
+    </div>
+
+    <h3>Der Ablauf jedes Abends</h3>
+    <ul>
+      <li><strong>Container öffnen</strong> — Räuchern, Kerze, Gong. Der <em>Hüter</em> markiert, dass jetzt ein anderer Raum gilt.</li>
+      <li><strong>Einstimmen</strong> — dreimal <em>Ong Namo Guru Dev Namo</em>, wie zu Beginn jeder Kundalini-Einheit. Der <em>Führer</em> gibt den Ton an.</li>
+      <li><strong>Vereinbarungen &amp; Check-in</strong> — Vertraulichkeit, aus dem „Ich" sprechen, kein ungefragter Rat, es gibt kein Müssen. Kurze Runde mit Redestab: Wie komme ich an?</li>
+      <li><strong>Das Tor</strong> — kurzer Impuls zu Chakra und Archetyp. Erleben vor Theorie.</li>
+      <li><strong>Kundalini-Praxis</strong> — Kriya, Pranayama, Meditation. Das Thema kommt in den Körper, bevor geredet wird.</li>
+      <li><strong>Chanten</strong> — das Bija-Mantra des Chakras und ein passendes Kundalini-Mantra.</li>
+      <li><strong>Teilen</strong> — jeder teilt, was aufkam. Die anderen bezeugen, statt zu analysieren.</li>
+      <li><strong>Ritual &amp; Abschluss</strong> — der abendspezifische Ritualteil, dann Dankbarkeitsrunde, ein Wort zum Mitnehmen, <em>Sat Nam</em>, Container schließen.</li>
+    </ul>
+
+    <div class="note">
+      <strong>Zwei Traditionen, bewusst verwoben.</strong> Die Bija-Mantras (LAM, VAM, RAM …) stammen aus dem klassischen tantrischen Chakren-System. Die Kriyas und Mantras wie Sat Kriya, Kirtan Kriya oder Ra Ma Da Sa kommen aus dem Kundalini Yoga nach Yogi Bhajan. Beide passen hier gut zusammen — sprecht es beim ersten Abend kurz an, damit klar ist, woher was kommt.
+    </div>
+  </section>
+
+  <!-- ============ GATE 1 — ROOT ============ -->
+  <section style="--accent:var(--c-root)">
+    <div class="block">
+      <div class="gate-head">
+        <div class="glyph"><span class="bija">लं</span><span class="el">Erde · LAM</span></div>
+        <div class="titles">
+          <div class="gate-eyebrow">Erstes Tor · Muladhara</div>
+          <h2 class="gate-title">Die Wurzel · Der Wilde Mann</h2>
+        </div>
+      </div>
+
+      <div class="facts">
+        <div class="f"><div class="k">Ort</div><div class="v">Beckenboden, Damm</div></div>
+        <div class="f"><div class="k">Element</div><div class="v">Erde</div></div>
+        <div class="f"><div class="k">Farbe</div><div class="v">Rot</div></div>
+        <div class="f"><div class="k">Bija</div><div class="v">LAM</div></div>
+      </div>
+
+      <h3>Der Archetyp</h3>
+      <p>Der Wilde Mann stammt aus Robert Blys <em>Eisenhans</em> — dem Grimm-Märchen vom rostroten Mann, der auf dem Grund eines Waldteichs schläft. Er ist nicht Brutalität, sondern die tiefe, instinkthafte, erdverbundene Lebenskraft, die ein Junge bergen muss, um Mann zu werden. In vielen Männern ist dieser Kontakt zum eigenen Instinkt und zum Körper verschüttet.</p>
+
+      <h3>Im Licht</h3>
+      <p>Erdung, Instinkt, Präsenz im eigenen Körper, natürliche Autorität, Zugehörigkeit, das Gefühl, einen festen Boden unter den Füßen zu haben.</p>
+
+      <h3>Im Schatten</h3>
+      <div class="poles">
+        <div class="pole"><div class="plabel">Zu viel · roh</div><p>Ungezügelte Wildheit, Handeln aus reinem Impuls, Zerstörung ohne Maß.</p></div>
+        <div class="pole"><div class="plabel">Zu wenig · entwurzelt</div><p>Der zahm gemachte Mann: abgeschnitten vom Körper und Instinkt, ruhelos, ohne Halt, chronisch unterschwellig ängstlich.</p></div>
+      </div>
+
+      <h3>Wie er sich im Mann zeigt</h3>
+      <p>Der Mann, der nur im Kopf lebt und seinen Körper kaum spürt. Der kein Gefühl von Heimat und Zugehörigkeit hat. Oder umgekehrt der, bei dem es unkontrolliert herausbricht. Ein diffuses Dauergrundrauschen an Unruhe ist oft ein Zeichen fehlender Wurzel.</p>
+
+      <h3>Die Arbeit an diesem Abend</h3>
+      <p><strong>Leitfrage:</strong> Wo gehöre ich hin? Was gibt mir Halt? Was habe ich von den Männern vor mir geerbt — und spüre ich meinen eigenen Instinkt und traue ihm?</p>
+
+      <hr class="divider">
+
+      <h3>Die Praxis</h3>
+      <div class="practice-fig">
+        <div class="figbox">
+          <svg viewBox="0 0 120 120" role="img" aria-label="Sat Kriya">
+            <circle cx="60" cy="60" r="54" fill="var(--c-root)" opacity="0.10"/>
+            <g fill="none" stroke="var(--ink)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+              <!-- kneeling base -->
+              <path d="M40 96 q20 6 40 0"/>
+              <path d="M46 96 q0 -8 6 -12"/>
+              <path d="M74 96 q0 -8 -6 -12"/>
+              <!-- torso -->
+              <line x1="60" y1="84" x2="60" y2="50"/>
+              <!-- head -->
+              <circle cx="60" cy="41" r="8" fill="none"/>
+              <!-- arms overhead, hands together up -->
+              <path d="M60 52 L54 24"/>
+              <path d="M60 52 L66 24"/>
+              <path d="M54 24 q6 -8 12 0"/>
+              <line x1="60" y1="18" x2="60" y2="10"/>
+            </g>
+          </svg>
+          <div class="figcap">Sat Kriya</div>
+        </div>
+        <div class="steps">
+          <p style="margin-top:0"><strong>Sat Kriya</strong> arbeitet genau am unteren Dreieck — Wurzel, Sakral, Solarplexus — und hebt die Energie von der Wurzel nach oben. Der perfekte Auftakt der Reise.</p>
+          <ol>
+            <li>Auf den Fersen sitzen (Felsensitz). Bei Knieproblemen im Schneidersitz oder auf einem Stuhl.</li>
+            <li>Arme gerade über den Kopf, Oberarme an den Ohren. Finger verschränken, die Zeigefinger zeigen nach oben.</li>
+            <li>„<em>Sat</em>" kraftvoll aus dem Nabel chanten und dabei den Nabel zur Wirbelsäule ziehen. „<em>Nam</em>" beim Loslassen. Rhythmus: ziehen, lösen, ziehen, lösen.</li>
+            <li>Für Einsteiger 3 Minuten. Danach ebenso lange in Rückenlage nachruhen — die Nachruhe ist Teil der Übung.</li>
+          </ol>
+          <p style="font-size:15px;margin-bottom:0">Erdung danach: barfuß tiefe Kniebeuge oder Vorbeuge, Füße bewusst auf dem Boden.</p>
+        </div>
+      </div>
+
+      <h3>Der Klang</h3>
+      <span class="chip">Bija: LAM</span><span class="chip">Sat Nam · geerdet</span>
+      <p style="margin-top:8px">LAM tief in den Beckenboden. Danach ein rhythmisches, gestampftes <em>Sat Nam</em> — gern mit Trommel oder Stampfen der Füße.</p>
+
+      <h3>Das Ritual</h3>
+      <p>Draußen oder barfuß auf Erde. Jeder hält einen Stein oder eine Handvoll Erde. Räuchern mit Zeder oder Wacholder. Geteilt wird zu Herkunft, Halt und Körper.</p>
+
+      <h3>Zu zweit führen</h3>
+      <div class="duo">
+        <p><span class="role">Hüter:</span> Baut vorab die Mitte (Kerze, Erde, Steine) und wählt einen erdigen Räucherduft. Da dies der erste Abend ist, führt er ausführlich durch die Vereinbarungen.</p>
+        <p><span class="role">Führer:</span> Macht Sat Kriya kraftvoll vor und hält die Zeit für Übung und Nachruhe streng ein — die Nachruhe wird gern verkürzt, gerade sie ist aber wichtig.</p>
+      </div>
+
+      <h3>Zum Vertiefen</h3>
+      <p class="links">
+        <a href="https://www.3ho.org/kundalini-yoga/sat-kriya/" target="_blank" rel="noopener">3HO · Sat Kriya (Anleitung)</a><br>
+        Robert Bly, <em>Eisenhans. Ein Buch über Männer</em> — der Ursprungstext zum Wilden Mann.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ GATE 2 — SACRAL ============ -->
+  <section style="--accent:var(--c-sacral)">
+    <div class="block">
+      <div class="gate-head">
+        <div class="glyph"><span class="bija">वं</span><span class="el">Wasser · VAM</span></div>
+        <div class="titles">
+          <div class="gate-eyebrow">Zweites Tor · Svadhisthana</div>
+          <h2 class="gate-title">Das Sakralzentrum · Der Liebhaber</h2>
+        </div>
+      </div>
+
+      <div class="facts">
+        <div class="f"><div class="k">Ort</div><div class="v">Unterbauch, Kreuzbein</div></div>
+        <div class="f"><div class="k">Element</div><div class="v">Wasser</div></div>
+        <div class="f"><div class="k">Farbe</div><div class="v">Orange</div></div>
+        <div class="f"><div class="k">Bija</div><div class="v">VAM</div></div>
+      </div>
+
+      <h3>Der Archetyp</h3>
+      <p>Der Liebhaber ist bei Moore und Gillette die Energie, die den Mann mit anderen und mit der Welt verbindet — voller Lebendigkeit, Sinnlichkeit und Feingefühl. Er ist der Sinn für Schönheit, Genuss und Berührung, die Fähigkeit, sich vom Leben bewegen zu lassen.</p>
+
+      <h3>Im Licht</h3>
+      <p>Leidenschaft, Sinnlichkeit, Kreativität, emotionale Lebendigkeit, Empathie, Genussfähigkeit, echte Verbindung.</p>
+
+      <h3>Im Schatten</h3>
+      <div class="poles">
+        <div class="pole"><div class="plabel">Zu viel · süchtig</div><p>Getrieben und unersättlich, verloren in Reizen — Sucht, Rastlosigkeit, das ständige Mehr, kein Nein zur Lust.</p></div>
+        <div class="pole"><div class="plabel">Zu wenig · betäubt</div><p>Flach und taub, abgeschnitten von Gefühl und Verlangen. Langeweile, Freudlosigkeit, alles ist grau.</p></div>
+      </div>
+
+      <h3>Wie er sich im Mann zeigt</h3>
+      <p>Der Mann, der ständig Reiz jagt — Neues, Substanzen, Bildschirme —, um überhaupt etwas zu spüren. Oder der, in dem nichts mehr schwingt. Oft liegt Scham über dem eigenen Begehren, oder die Kreativität ist verstummt.</p>
+
+      <h3>Die Arbeit an diesem Abend</h3>
+      <p><strong>Leitfrage:</strong> Was nährt meine Lebensfreude? Wo bin ich taub, wo getrieben? Wie ist mein Verhältnis zu Lust, Genuss und Scham?</p>
+
+      <hr class="divider">
+
+      <h3>Die Praxis</h3>
+      <div class="practice-fig">
+        <div class="figbox">
+          <svg viewBox="0 0 120 120" role="img" aria-label="Froschhaltung">
+            <circle cx="60" cy="60" r="54" fill="var(--c-sacral)" opacity="0.12"/>
+            <g fill="none" stroke="var(--ink)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="30" y1="100" x2="90" y2="100"/>
+              <!-- deep squat: hips low, knees wide, fingertips down -->
+              <circle cx="60" cy="44" r="8" fill="none"/>
+              <path d="M60 52 q-2 12 -6 20"/>            <!-- torso curving down -->
+              <path d="M54 72 q-10 8 -16 26"/>           <!-- left thigh/shin to floor -->
+              <path d="M60 66 q10 6 16 32"/>             <!-- right thigh/shin -->
+              <path d="M54 72 L48 98"/>                  <!-- left arm to floor fingertips -->
+              <path d="M60 60 q6 4 6 12 l0 26"/>         <!-- right side down -->
+              <path d="M38 98 l-4 4"/><path d="M76 98 l4 4"/>
+            </g>
+          </svg>
+          <div class="figcap">Froschhaltung</div>
+        </div>
+        <div class="steps">
+          <p style="margin-top:0"><strong>Froschhaltung (Frog Pose)</strong> bewegt Wasser und Lebensenergie im Becken — dynamisch und belebend.</p>
+          <ol>
+            <li>Aufrecht stehen, Fersen zusammen, in die Hocke gehen. Fersen heben sich, Fingerspitzen berühren den Boden zwischen den Füßen, Kopf oben.</li>
+            <li>Einatmen: Gesäß hebt sich, Beine strecken, Kopf sinkt Richtung Knie. Fingerspitzen bleiben am Boden.</li>
+            <li>Ausatmen: zurück in die Hocke, Kopf hebt sich, Blick nach vorn.</li>
+            <li>Beginn mit rund 10–15 Wiederholungen, langsam steigern. Danach fließende Wirbelsäulenbewegung im Sitzen: einatmen Brust nach vorn, ausatmen Rücken runden.</li>
+          </ol>
+          <p style="font-size:15px;margin-bottom:0">Alles weich und wellenartig halten — dies ist der wasserhafte Abend.</p>
+        </div>
+      </div>
+
+      <h3>Der Klang</h3>
+      <span class="chip">Bija: VAM</span><span class="chip">Kreisendes Tönen</span>
+      <p style="margin-top:8px">VAM fließend in den Unterbauch. Danach freies, kreisendes Tönen ohne festen Text — den Klang wandern lassen, wie Wasser.</p>
+
+      <h3>Das Ritual</h3>
+      <p>Eine Schale Wasser in der Mitte, bewusstes Trinken. Warmes, oranges Licht. Geteilt wird zu Kreativität, Lust, Scham und Gefühl.</p>
+
+      <h3>Zu zweit führen</h3>
+      <div class="duo">
+        <p><span class="role">Hüter:</span> Dieser Abend berührt Sexualität und Scham. Er erinnert klar an die Vertraulichkeit und sorgt dafür, dass niemand sich rechtfertigen muss.</p>
+        <p><span class="role">Führer:</span> Hält die Froschhaltung spielerisch und nicht leistungsorientiert — es geht um Fluss, nicht um Wiederholungszahlen. Er darf beim Teilen als Erster ein Stück Verletzlichkeit zeigen.</p>
+      </div>
+
+      <h3>Zum Vertiefen</h3>
+      <p class="links">
+        <a href="https://www.shaktakaur.com/yogic-resources/sat-kriya-workout" target="_blank" rel="noopener">Sat-Kriya-Workout (enthält Froschhaltung im Detail)</a><br>
+        Moore &amp; Gillette, <em>King, Warrior, Magician, Lover</em> — Kapitel „Der Liebhaber".
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ GATE 3 — SOLAR ============ -->
+  <section style="--accent:var(--c-solar)">
+    <div class="block">
+      <div class="gate-head">
+        <div class="glyph"><span class="bija">रं</span><span class="el">Feuer · RAM</span></div>
+        <div class="titles">
+          <div class="gate-eyebrow">Drittes Tor · Manipura</div>
+          <h2 class="gate-title">Das Solarzentrum · Der Krieger</h2>
+        </div>
+      </div>
+
+      <div class="facts">
+        <div class="f"><div class="k">Ort</div><div class="v">Solarplexus, Nabel</div></div>
+        <div class="f"><div class="k">Element</div><div class="v">Feuer</div></div>
+        <div class="f"><div class="k">Farbe</div><div class="v">Gelb</div></div>
+        <div class="f"><div class="k">Bija</div><div class="v">RAM</div></div>
+      </div>
+
+      <h3>Der Archetyp</h3>
+      <p>Der Krieger bei Moore und Gillette ist aggressive, aber nicht gewalttätige Handlungskraft — Disziplin, Klarheit, Loyalität zu einer Sache. Seine Kraft dient dem, was richtig ist, nicht der Herrschaft über andere. Er kennt seine Grenzen und die der anderen.</p>
+
+      <h3>Im Licht</h3>
+      <p>Wille, Mut, Klarheit, Disziplin, gesunde Grenzen, Entschlossenheit, das saubere Nein, schützende Stärke, für etwas einstehen.</p>
+
+      <h3>Im Schatten</h3>
+      <div class="poles">
+        <div class="pole"><div class="plabel">Zu viel · Sadist</div><p>Grausamkeit, Herrschsucht, Aggression, die in Gewalt kippt, kalte Rücksichtslosigkeit.</p></div>
+        <div class="pole"><div class="plabel">Zu wenig · Masochist</div><p>Kann keine Grenze setzen, lässt sich alles gefallen, Fußabtreter, weicht Konflikten aus, staut Groll an.</p></div>
+      </div>
+
+      <h3>Wie er sich im Mann zeigt</h3>
+      <p>Der Mann, der explodiert oder andere klein macht. Oder der, der nie Nein sagen kann, Konflikte meidet, kein Rückgrat zeigt — bis der unterdrückte Groll seitlich herausleckt, in Sarkasmus oder Rückzug.</p>
+
+      <h3>Die Arbeit an diesem Abend</h3>
+      <p><strong>Leitfrage:</strong> Wofür stehe ich auf? Wo kann ich nicht Nein sagen? Wo leckt meine Wut sideways heraus, statt klar dazustehen?</p>
+
+      <hr class="divider">
+
+      <h3>Die Praxis</h3>
+      <div class="practice-fig">
+        <div class="figbox">
+          <svg viewBox="0 0 120 120" role="img" aria-label="Bogenhaltung">
+            <circle cx="60" cy="60" r="54" fill="var(--c-solar)" opacity="0.14"/>
+            <g fill="none" stroke="var(--ink)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="26" y1="92" x2="94" y2="92"/>
+              <!-- bow pose: prone, arched, holding ankles -->
+              <path d="M30 78 q26 -30 52 -30"/>          <!-- back arch head to hips -->
+              <circle cx="30" cy="74" r="7" fill="none"/> <!-- head -->
+              <path d="M82 48 q6 10 -2 22"/>             <!-- thigh up -->
+              <path d="M80 70 q-8 12 -22 14"/>           <!-- shin back toward hands -->
+              <path d="M40 70 q10 12 18 14"/>            <!-- arm reaching to ankle -->
+            </g>
+          </svg>
+          <div class="figcap">Bogenhaltung</div>
+        </div>
+        <div class="steps">
+          <p style="margin-top:0">Der Feuerabend. <strong>Streckhaltung</strong> und <strong>Bogen</strong> zünden den Nabelpunkt, getragen vom <strong>Feueratem</strong>.</p>
+          <ol>
+            <li><strong>Streckhaltung:</strong> auf dem Rücken Kopf und Fersen 15 cm anheben, Arme über den Beinen ausgestreckt, Blick zu den Zehen. Dazu Feueratem.</li>
+            <li><strong>Feueratem:</strong> rasches, gleichmäßiges Atmen durch die Nase aus dem Nabel — Ausatmen zieht den Nabel ein, Einatmen lässt ihn los.</li>
+            <li><strong>Bogen:</strong> auf dem Bauch die Fußgelenke greifen, Brust und Oberschenkel heben, sich aufspannen. Lange tief atmen oder Feueratem.</li>
+            <li>Danach jeder ein lautes, klares „Nein" oder eine Grenze in den Kreis sprechen.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="note"><strong>Sicherheit beim Feueratem:</strong> Sanft beginnen, bei Schwindel in normale Atmung wechseln. Nicht empfohlen bei unbehandeltem Bluthochdruck, Herzproblemen, Epilepsie oder frischen Bauch-OPs. Als Alternative lange tiefe Atmung anbieten.</div>
+
+      <h3>Der Klang</h3>
+      <span class="chip">Bija: RAM</span><span class="chip">Kraftvolles Sat Nam</span>
+      <p style="margin-top:8px">RAM kraftvoll aus dem Bauch. Dann darf jeder seine Grenze laut in den Raum stellen.</p>
+
+      <h3>Das Ritual</h3>
+      <p>Feuer oder Kerze in der Mitte. Geteilt wird zu Wut, Grenzen, Kraft und den Orten, an denen ich mich klein mache.</p>
+
+      <h3>Zu zweit führen</h3>
+      <div class="duo">
+        <p><span class="role">Führer:</span> Setzt Tempo und Feuer, macht Feueratem und Bogen kraftvoll vor und motiviert, an der eigenen Kante zu bleiben.</p>
+        <p><span class="role">Hüter:</span> Behält den Raum im Blick, wenn Wut hochkommt — Wut darf da sein, aber sie richtet sich nie gegen einen konkreten Mann im Kreis. Er hält diese Grenze klar.</p>
+      </div>
+
+      <h3>Zum Vertiefen</h3>
+      <p class="links">
+        <a href="https://www.3ho.org/kundalini-yoga/" target="_blank" rel="noopener">3HO · Kundalini-Bibliothek (Feueratem, Streckhaltung, Bogen)</a><br>
+        <a href="https://www.artofmanliness.com/character/behavior/king-warrior-magician-lover-introduction/" target="_blank" rel="noopener">Einführung in die vier Archetypen (Krieger)</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ GATE 4 — HEART ============ -->
+  <section style="--accent:var(--c-heart)">
+    <div class="block">
+      <div class="gate-head">
+        <div class="glyph"><span class="bija">यं</span><span class="el">Luft · YAM</span></div>
+        <div class="titles">
+          <div class="gate-eyebrow">Viertes Tor · Anahata</div>
+          <h2 class="gate-title">Das Herz · Der Heiler</h2>
+        </div>
+      </div>
+
+      <div class="facts">
+        <div class="f"><div class="k">Ort</div><div class="v">Herzmitte</div></div>
+        <div class="f"><div class="k">Element</div><div class="v">Luft</div></div>
+        <div class="f"><div class="k">Farbe</div><div class="v">Grün (auch Rosa)</div></div>
+        <div class="f"><div class="k">Bija</div><div class="v">YAM</div></div>
+      </div>
+
+      <h3>Der Archetyp</h3>
+      <p>Der Heiler ist das Herz des reifen Mannes — der, der fühlen, trauern, vergeben und pflegen kann, ohne sich selbst zu verlieren. In der Männerarbeit ist die Trauer das Tor zum Herzen: die Fähigkeit zu trauern gilt als Zeichen echter Reife, nicht als Schwäche. (Ein Herz-Archetyp, der Motive aus der Männerarbeit aufnimmt — kein reiner Moore-Gillette-Typ.)</p>
+
+      <h3>Im Licht</h3>
+      <p>Mitgefühl, Vergebung, die Fähigkeit zu trauern, Zärtlichkeit, Brüderlichkeit, Fürsorge, ohne sich aufzugeben.</p>
+
+      <h3>Im Schatten</h3>
+      <div class="poles">
+        <div class="pole"><div class="plabel">Zu viel · Selbstaufgabe</div><p>Verliert sich im Umsorgen, rettet andere, um dem eigenen Schmerz auszuweichen — Helfersyndrom, Märtyrer.</p></div>
+        <div class="pole"><div class="plabel">Zu wenig · verhärtet</div><p>Gepanzert, kann nicht trauern, nicht vergeben. Zynismus, Isolation, „ich brauche niemanden".</p></div>
+      </div>
+
+      <h3>Wie er sich im Mann zeigt</h3>
+      <p>Der Mann, der alle repariert und selbst leer ist. Oder der, der zugemauert ist, nicht weinen kann, vom eigenen Verlust abgeschnitten. Ungeweinte Trauer sitzt oft als Härte in der Brust.</p>
+
+      <h3>Die Arbeit an diesem Abend</h3>
+      <p><strong>Leitfrage:</strong> Was habe ich noch nicht getrauert? Wem — auch mir selbst — kann ich vergeben? Wo trage ich Panzer?</p>
+
+      <hr class="divider">
+
+      <h3>Die Praxis</h3>
+      <div class="practice-fig">
+        <div class="figbox">
+          <svg viewBox="0 0 120 120" role="img" aria-label="Heilmudra im Sitzen">
+            <circle cx="60" cy="60" r="54" fill="var(--c-heart)" opacity="0.13"/>
+            <g fill="none" stroke="var(--ink)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+              <!-- seated easy pose -->
+              <path d="M36 96 q24 8 48 0"/>              <!-- crossed legs base -->
+              <path d="M44 96 q16 -10 32 0"/>
+              <line x1="60" y1="86" x2="60" y2="52"/>    <!-- torso -->
+              <circle cx="60" cy="43" r="8" fill="none"/>
+              <!-- elbows tucked, forearms up, palms flat -->
+              <path d="M60 60 L48 66"/><path d="M48 66 L46 50"/>  <!-- left arm up -->
+              <path d="M60 60 L72 66"/><path d="M72 66 L74 50"/>  <!-- right arm up -->
+              <line x1="41" y1="49" x2="51" y2="49"/>    <!-- left flat palm -->
+              <line x1="69" y1="49" x2="79" y2="49"/>    <!-- right flat palm -->
+            </g>
+          </svg>
+          <div class="figcap">Ra-Ma-Da-Sa-Mudra</div>
+        </div>
+        <div class="steps">
+          <p style="margin-top:0">Nach etwas Brustöffnung folgt die klassische <strong>Heilmeditation Ra Ma Da Sa Sa Say So Hung</strong> — sie gehört genau hierher.</p>
+          <ol>
+            <li>Zum Aufwärmen Brustöffner und Armkreise, gern <em>Ego Eradicator</em>, um das Herz zu heben.</li>
+            <li>Im Schneidersitz, leichter Halsverschluss. Ellbogen an die Rippen, Unterarme aufrecht, Handflächen flach nach oben, Handgelenke zurückgebogen, im 45°-Winkel.</li>
+            <li>Die acht Laute auf einem Atem chanten: <em>Ra Ma Da Sa · Sa Say So Hung</em>. Nabel bei „Sa" (dem ersten) und „Hung" einziehen. Etwa 11 Minuten.</li>
+            <li>Zum Abschluss einatmen, Atem halten, jemanden (oder sich) heil und in weißem Licht visualisieren. Dann Arme hochstrecken und Hände ausschütteln, dreimal.</li>
+          </ol>
+        </div>
+      </div>
+
+      <h3>Der Klang</h3>
+      <div class="mantra">Ra&nbsp;Ma&nbsp;Da&nbsp;Sa · Sa&nbsp;Say&nbsp;So&nbsp;Hung</div>
+      <span class="chip">Bija: YAM</span><span class="chip">Heilmantra</span>
+      <p style="margin-top:8px">YAM ins Herz, dann das Heilmantra gemeinsam, die Hände vor der Brust.</p>
+
+      <h3>Das Ritual</h3>
+      <p>Eine Partnerübung: Rücken an Rücken atmen oder eine Hand auf das Herz des anderen legen. Geteilt wird zu Trauer, Verlust, Vergebung und Liebe.</p>
+
+      <h3>Zu zweit führen</h3>
+      <div class="duo">
+        <p><span class="role">Hüter:</span> Der wichtigste Abend für ihn. Trauer kann aufbrechen — er bleibt ruhig präsent, drängt nichts, tröstet nicht weg, sondern hält den Raum, in dem geweint werden darf. Kein „ist doch nicht so schlimm".</p>
+        <p><span class="role">Führer:</span> Hält das Heilmantra warm und trägt es stimmlich, auch wenn einzelne Stimmen brechen. Er gibt genug Zeit für die Nachstille.</p>
+      </div>
+
+      <h3>Zum Vertiefen</h3>
+      <p class="links">
+        <a href="https://www.3ho.org/kundalini-yoga/ra-ma-da-sa-sa-say-so-hung-the-ultimate-healing-tool/" target="_blank" rel="noopener">3HO · Ra Ma Da Sa (Anleitung)</a><br>
+        <a href="https://www.kundaliniyoga.org/lesson_23" target="_blank" rel="noopener">Vertiefte Anleitung zur Heilmeditation</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ GATE 5 — THROAT ============ -->
+  <section style="--accent:var(--c-throat)">
+    <div class="block">
+      <div class="gate-head">
+        <div class="glyph"><span class="bija">हं</span><span class="el">Äther · HAM</span></div>
+        <div class="titles">
+          <div class="gate-eyebrow">Fünftes Tor · Vishuddha</div>
+          <h2 class="gate-title">Die Kehle · Der Barde</h2>
+        </div>
+      </div>
+
+      <div class="facts">
+        <div class="f"><div class="k">Ort</div><div class="v">Kehle</div></div>
+        <div class="f"><div class="k">Element</div><div class="v">Äther, Raum</div></div>
+        <div class="f"><div class="k">Farbe</div><div class="v">Blau</div></div>
+        <div class="f"><div class="k">Bija</div><div class="v">HAM</div></div>
+      </div>
+
+      <h3>Der Archetyp</h3>
+      <p>Der Barde ist der Wahrsprecher — der, dessen Wort Gewicht hat. Der Sänger und Dichter, der die Wahrheit der Gemeinschaft ausspricht und singt. In der Männerarbeit ist er das Finden der eigenen, echten Stimme und der Mut, das Ungesagte zu sagen.</p>
+
+      <h3>Im Licht</h3>
+      <p>Wahrhaftigkeit, authentischer Ausdruck, der Mut zu sprechen, die schöpferische Stimme — und ebenso das Zuhören. Das Wort, das klärt oder heilt.</p>
+
+      <h3>Im Schatten</h3>
+      <div class="poles">
+        <div class="pole"><div class="plabel">Zu viel · laut &amp; falsch</div><p>Dominiert mit Worten, redet, um nicht zu fühlen, manipuliert, ist nur Lärm ohne Wahrheit.</p></div>
+        <div class="pole"><div class="plabel">Zu wenig · verstummt</div><p>Schluckt die eigene Wahrheit, kann sich nicht äußern, fürchtet die eigene Stimme, „hält den Frieden" auf eigene Kosten.</p></div>
+      </div>
+
+      <h3>Wie er sich im Mann zeigt</h3>
+      <p>Der Mann, der nie sagt, was er meint, der Ja-Sager. Oder der, der alle übertönt und nie in der Wahrheit landet. Beides ist ein Weg, dem Risiko des echten Wortes auszuweichen.</p>
+
+      <h3>Die Arbeit an diesem Abend</h3>
+      <p><strong>Leitfrage:</strong> Was habe ich nie ausgesprochen? Wo spiele ich eine Rolle, statt zu sprechen? Wo bringe ich mich selbst zum Schweigen?</p>
+
+      <hr class="divider">
+
+      <h3>Die Praxis</h3>
+      <div class="practice-fig">
+        <div class="figbox">
+          <svg viewBox="0 0 120 120" role="img" aria-label="Kobra">
+            <circle cx="60" cy="60" r="54" fill="var(--c-throat)" opacity="0.13"/>
+            <g fill="none" stroke="var(--ink)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="22" y1="94" x2="98" y2="94"/>
+              <!-- cobra: prone, chest and throat lifted -->
+              <path d="M84 94 q-22 2 -34 -6"/>            <!-- legs/hips on floor -->
+              <path d="M50 88 q-14 -10 -12 -30"/>        <!-- torso rising -->
+              <circle cx="35" cy="52" r="7" fill="none"/><!-- head, throat open -->
+              <path d="M42 60 q-4 -6 -3 -10"/>           <!-- throat/neck arch -->
+              <path d="M50 88 L42 74"/>                   <!-- supporting arm -->
+              <path d="M42 74 L40 60"/>
+            </g>
+          </svg>
+          <div class="figcap">Kobra</div>
+        </div>
+        <div class="steps">
+          <p style="margin-top:0">Der Klang-Abend des Kreises. Erst den Hals lösen und öffnen, dann viel Stimme.</p>
+          <ol>
+            <li>Sanfte Nackenrollen, dann leichter Halsverschluss (Kinn leicht zurück).</li>
+            <li><strong>Kobra:</strong> auf dem Bauch, Hände unter den Schultern, Brust heben, Kehle weit, ein paar Atemzüge halten. Öffnet den Kehlraum.</li>
+            <li>Dann gemeinsames Tönen: langes <em>Sat Naaam</em> oder <em>Wahe Guru</em>, Obertöne, Summen — die Stimmen im Raum verschmelzen lassen.</li>
+            <li>Jeder spricht eine Wahrheit aus, die lange ungesagt blieb. Der Kreis tönt danach für ihn.</li>
+          </ol>
+        </div>
+      </div>
+
+      <h3>Der Klang</h3>
+      <span class="chip">Bija: HAM</span><span class="chip">Sat Naaam · lang</span><span class="chip">Wahe Guru</span>
+      <p style="margin-top:8px">HAM an der Kehle. An diesem Abend darf das Chanten viel Raum bekommen — es ist selbst die Praxis.</p>
+
+      <h3>Das Ritual</h3>
+      <p>Das Aussprechen der ungesagten Wahrheit, getragen vom gemeinsamen Tönen. Geteilt wird zu Ausdruck und Schweigen.</p>
+
+      <h3>Zu zweit führen</h3>
+      <div class="duo">
+        <p><span class="role">Führer &amp; Hüter gemeinsam:</span> An diesem Abend gehen beide voran — jeder von euch spricht als Erster eine eigene ungesagte Wahrheit aus. Nur wenn ihr das Risiko vormacht, trauen sich die anderen.</p>
+        <p><span class="role">Hüter:</span> Achtet darauf, dass nach einer Wahrheit nicht sofort kommentiert oder „repariert" wird — der Kreis tönt, statt zu reden.</p>
+      </div>
+
+      <h3>Zum Vertiefen</h3>
+      <p class="links">
+        <a href="https://www.3ho.org/kundalini-yoga/" target="_blank" rel="noopener">3HO · Mantras &amp; Kehlpraxis</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ GATE 6 — THIRD EYE ============ -->
+  <section style="--accent:var(--c-thirdeye)">
+    <div class="block">
+      <div class="gate-head">
+        <div class="glyph"><span class="bija">ॐ</span><span class="el">Licht · OM</span></div>
+        <div class="titles">
+          <div class="gate-eyebrow">Sechstes Tor · Ajna</div>
+          <h2 class="gate-title">Das Dritte Auge · Der Magier</h2>
+        </div>
+      </div>
+
+      <div class="facts">
+        <div class="f"><div class="k">Ort</div><div class="v">Stirn, zwischen den Brauen</div></div>
+        <div class="f"><div class="k">Element</div><div class="v">Licht</div></div>
+        <div class="f"><div class="k">Farbe</div><div class="v">Indigo</div></div>
+        <div class="f"><div class="k">Bija</div><div class="v">OM</div></div>
+      </div>
+
+      <h3>Der Archetyp</h3>
+      <p>Der Magier bei Moore und Gillette ist die Energie von Einweihung und Transformation — Wissen, Einsicht, Weisheit. Er sieht unter die Oberfläche, kennt die Zusammenhänge und begleitet Wandlung, in sich und in anderen. Er ist der innere Seher.</p>
+
+      <h3>Im Licht</h3>
+      <p>Intuition, Einsicht, Weisheit, Vision, Unterscheidungsvermögen, das Erkennen von Mustern, Selbsterkenntnis, das Halten von Wandlung für andere.</p>
+
+      <h3>Im Schatten</h3>
+      <div class="poles">
+        <div class="pole"><div class="plabel">Zu viel · Manipulator</div><p>Nutzt Wissen, um zu kontrollieren. Kühle Cleverness, hält zurück, lebt abgehoben nur im Kopf.</p></div>
+        <div class="pole"><div class="plabel">Zu wenig · Verleugner</div><p>Leugnet sein eigenes Wissen, stellt sich dumm, weicht der Verantwortung für das aus, was er sieht, misstraut seiner Intuition.</p></div>
+      </div>
+
+      <h3>Wie er sich im Mann zeigt</h3>
+      <p>Der überkluge, distanzierte Zyniker, der andere durchschaut und lenkt. Oder der, der seine Intuition nicht ernst nimmt, sich naiv gibt und die eigene Klarheit nicht leben will.</p>
+
+      <h3>Die Arbeit an diesem Abend</h3>
+      <p><strong>Leitfrage:</strong> Was weiß ich, ohne es beweisen zu können? Was tue ich so, als wüsste ich es nicht? Welche Vision zieht mich?</p>
+
+      <hr class="divider">
+
+      <h3>Die Praxis</h3>
+      <div class="practice-fig">
+        <div class="figbox">
+          <svg viewBox="0 0 120 120" role="img" aria-label="Kirtan Kriya im Sitzen">
+            <circle cx="60" cy="60" r="54" fill="var(--c-thirdeye)" opacity="0.13"/>
+            <g fill="none" stroke="var(--ink)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M36 96 q24 8 48 0"/>
+              <path d="M44 96 q16 -10 32 0"/>
+              <line x1="60" y1="86" x2="60" y2="52"/>
+              <circle cx="60" cy="43" r="8" fill="none"/>
+              <!-- third eye dot -->
+              <circle cx="60" cy="40" r="1.6" fill="var(--ink)" stroke="none"/>
+              <!-- hands resting on knees, gyan mudra -->
+              <path d="M60 60 q-14 4 -20 20"/>
+              <path d="M60 60 q14 4 20 20"/>
+              <circle cx="39" cy="82" r="3" fill="none"/>
+              <circle cx="81" cy="82" r="3" fill="none"/>
+            </g>
+          </svg>
+          <div class="figcap">Kirtan Kriya</div>
+        </div>
+        <div class="steps">
+          <p style="margin-top:0"><strong>Kirtan Kriya (Sa Ta Na Ma)</strong> — eine der wichtigsten Meditationen des Kundalini Yoga, mit Fokus am Dritten Auge.</p>
+          <ol>
+            <li>Zum Aufwärmen Wechselatmung (durch je ein Nasenloch abwechselnd).</li>
+            <li>Im Schneidersitz. Bei jedem Laut Daumen und einen Finger zusammenpressen: <em>Sa</em>–Zeige, <em>Ta</em>–Mittel, <em>Na</em>–Ring, <em>Ma</em>–kleiner Finger.</li>
+            <li>Die Energie in einem „L" fühlen: von der Krone herein und durch das Dritte Auge hinaus.</li>
+            <li>Rhythmus (11 Min.): 2 Min. laut · 2 Min. flüsternd · 3 Min. still (Finger laufen weiter) · 2 Min. flüsternd · 2 Min. laut. Zum Schluss Arme hochstrecken, Hände ausschütteln.</li>
+          </ol>
+        </div>
+      </div>
+
+      <h3>Der Klang</h3>
+      <div class="mantra">Sa · Ta · Na · Ma</div>
+      <span class="chip">Bija: OM</span><span class="chip">Kirtan Kriya</span>
+      <p style="margin-top:8px">OM ans Dritte Auge, dann Sa Ta Na Ma mit der Fingerfolge — von laut über Stille zurück.</p>
+
+      <h3>Das Ritual</h3>
+      <p>Stille und ein Symbol oder eine Karte, die jeder für sich zieht. Geteilt wird zu Intuition, Vision und innerer Führung.</p>
+
+      <h3>Zu zweit führen</h3>
+      <div class="duo">
+        <p><span class="role">Führer:</span> Führt die Lautstärke-Wechsel und die Fingerfolge klar an. Die stille Phase ist die tiefste — hier nichts sagen, nur den Raum halten.</p>
+        <p><span class="role">Hüter:</span> Bereitet das Symbol-Ritual vor (Karten, Steine, Naturobjekte) und hütet die Stille nach der Meditation, bevor geteilt wird.</p>
+      </div>
+
+      <h3>Zum Vertiefen</h3>
+      <p class="links">
+        <a href="https://www.3ho.org/kundalini-yoga/kirtan-kriya/" target="_blank" rel="noopener">3HO · Kirtan Kriya (Anleitung)</a><br>
+        <a href="https://www.kundaliniyoga.org/lesson_15" target="_blank" rel="noopener">Vertiefte Anleitung zur Kirtan Kriya</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ GATE 7 — CROWN ============ -->
+  <section style="--accent:var(--c-crown)">
+    <div class="block">
+      <div class="gate-head">
+        <div class="glyph"><span class="bija">ॐ</span><span class="el">Bewusstsein</span></div>
+        <div class="titles">
+          <div class="gate-eyebrow">Siebtes Tor · Sahasrara</div>
+          <h2 class="gate-title">Die Krone · Der König &amp; Weise</h2>
+        </div>
+      </div>
+
+      <div class="facts">
+        <div class="f"><div class="k">Ort</div><div class="v">Scheitel</div></div>
+        <div class="f"><div class="k">Element</div><div class="v">Bewusstsein</div></div>
+        <div class="f"><div class="k">Farbe</div><div class="v">Violett / Weiß</div></div>
+        <div class="f"><div class="k">Bija</div><div class="v">Stille / OM</div></div>
+      </div>
+
+      <h3>Der Archetyp</h3>
+      <p>Der König ist bei Moore und Gillette der zentrale Archetyp — die Energie gerechter, schöpferischer Ordnung und die Quelle des Segens. Reif dient er nicht dem eigenen Ego, sondern dem Ganzen: Er segnet und stärkt andere. Als Weiser hat er die anderen sechs integriert und hütet, was größer ist als er selbst.</p>
+
+      <h3>Im Licht</h3>
+      <p>Segnen, Fruchtbarkeit, ruhige zentrale Autorität, Dienst am Größeren, Sinn und Vermächtnis, die Fähigkeit, andere zu segnen und zu ermächtigen.</p>
+
+      <h3>Im Schatten</h3>
+      <div class="poles">
+        <div class="pole"><div class="plabel">Zu viel · Tyrann</div><p>Ego-Aufblähung, Selbstherrlichkeit, Herrschsucht, „es geht nur um mich", Kontrolle.</p></div>
+        <div class="pole"><div class="plabel">Zu wenig · Schwächling</div><p>Abdankung, kein Zentrum, Ohnmacht, Sinnverlust — kann weder halten noch segnen.</p></div>
+      </div>
+
+      <h3>Wie er sich im Mann zeigt</h3>
+      <p>Der kontrollierende, wichtigtuerische Mann. Oder der, der sich leer und richtungslos fühlt, sein eigenes Leben nicht führen und niemanden segnen kann.</p>
+
+      <h3>Die Arbeit an diesem Abend</h3>
+      <p><strong>Leitfrage:</strong> Wofür lebe ich? Was will durch mich in die Welt? Wen und was segne ich? Was ist mein Vermächtnis?</p>
+
+      <hr class="divider">
+
+      <h3>Die Praxis</h3>
+      <div class="practice-fig">
+        <div class="figbox">
+          <svg viewBox="0 0 120 120" role="img" aria-label="Stille Meditation">
+            <circle cx="60" cy="60" r="54" fill="var(--c-crown)" opacity="0.13"/>
+            <g fill="none" stroke="var(--ink)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M34 98 q26 9 52 0"/>
+              <path d="M43 98 q17 -11 34 0"/>
+              <line x1="60" y1="88" x2="60" y2="52"/>
+              <circle cx="60" cy="43" r="8" fill="none"/>
+              <!-- hands in lap -->
+              <path d="M60 62 q-12 6 -14 20"/>
+              <path d="M60 62 q12 6 14 20"/>
+              <path d="M46 82 q14 8 28 0"/>
+            </g>
+            <!-- crown radiance -->
+            <g stroke="var(--c-crown)" stroke-width="2.4" stroke-linecap="round" opacity="0.8">
+              <line x1="60" y1="30" x2="60" y2="22"/>
+              <line x1="50" y1="32" x2="46" y2="26"/>
+              <line x1="70" y1="32" x2="74" y2="26"/>
+            </g>
+          </svg>
+          <div class="figcap">Stille am Scheitel</div>
+        </div>
+        <div class="steps">
+          <p style="margin-top:0">Weniger tun, mehr empfangen. Der Abschluss der ganzen Reise.</p>
+          <ol>
+            <li>Lange tiefe Atmung im Sitzen, Wirbelsäule aufgerichtet.</li>
+            <li>Stille Meditation mit sanftem Fokus am Scheitel — die Aufmerksamkeit ruht oben, ohne etwas zu wollen.</li>
+            <li>Ein langes <em>Ong</em> und <em>Sat Naaam</em>, das in Stille ausklingt.</li>
+            <li><strong>Segenskreis:</strong> jeder empfängt und gibt einen Segen. Zum ganz großen Abschluss der traditionelle Ausklang <em>„May the long time sun shine upon you"</em>.</li>
+          </ol>
+        </div>
+      </div>
+
+      <h3>Der Klang</h3>
+      <span class="chip">OM</span><span class="chip">Ong · Sat Naaam</span><span class="chip">Long Time Sun</span>
+      <p style="margin-top:8px">Den Klang im Scheitel enden lassen, dann Stille.</p>
+
+      <h3>Das Ritual</h3>
+      <p>Der Segenskreis. Geteilt wird zu Sinn, Vermächtnis und dem, was jeder aus den sieben Toren mitnimmt.</p>
+
+      <h3>Zu zweit führen</h3>
+      <div class="duo">
+        <p><span class="role">Hüter:</span> Gestaltet den Segenskreis feierlich und gibt jedem Mann echten Raum, gesegnet zu werden — nicht schnell durchreichen.</p>
+        <p><span class="role">Führer:</span> Hält die Meditation weit und still und stimmt den Schlussgesang an, der die ganze Reise beschließt.</p>
+      </div>
+
+      <h3>Zum Vertiefen</h3>
+      <p class="links">
+        <a href="https://scottjeffrey.com/king-warrior-magician-lover-masculine-archetypes/" target="_blank" rel="noopener">Vertiefung zu König &amp; den vier Archetypen</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ CLOSING ============ -->
+  <section>
+    <h2 class="section-title">Der achte Abend · Das Fest</h2>
+    <p class="lead-in">Nach den sieben Toren ein größerer Abschluss in der Natur: ein Feuer, ein gemeinsamer Tag draußen, ein bewusster Übergang. Kein neues Thema, sondern das Würdigen des Weges, den ihr gemeinsam gegangen seid. Hier haben Räuchern, Feuer und ein einfaches Ritual ihren natürlichen Platz.</p>
+
+    <div class="note">
+      <strong>Rhythmus &amp; Gruppe:</strong> 6–8 Männer, alle 2–4 Wochen. Alternativ lässt sich der Bogen auch als Wochenende verdichten, an dem ihr mehrere Tore hintereinander durchschreitet — dann mehr Nachruhe und Pausen einplanen.
+    </div>
+  </section>
+
+  <footer>
+    <hr class="divider">
+    <p><strong>Quellen &amp; weiterführend</strong></p>
+    <p class="links">
+      Kundalini · <a href="https://www.3ho.org/kundalini-yoga/" target="_blank" rel="noopener">3HO Kundalini-Bibliothek</a> · <a href="https://www.kundaliniyoga.org/" target="_blank" rel="noopener">kundaliniyoga.org (Guru Rattana)</a><br>
+      Archetypen · Robert Moore &amp; Douglas Gillette, <em>King, Warrior, Magician, Lover</em> (1990) · Robert Bly, <em>Eisenhans / Iron John</em> (1990) · <a href="https://www.artofmanliness.com/character/behavior/king-warrior-magician-lover-introduction/" target="_blank" rel="noopener">Einführung in die vier Archetypen</a>
+    </p>
+    <hr class="divider">
+    <p style="font-size:13px">Die Bija-Mantras entstammen dem klassischen Chakren-System, die Kriyas und Mantras dem Kundalini Yoga nach Yogi Bhajan. Alle körperlichen Übungen sanft angehen und an die Verfassung jedes Mannes anpassen; im Zweifel eine mildere Variante wählen.</p>
+  </footer>
+
+</div>
+</body>
+</html>
